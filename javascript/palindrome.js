@@ -17,3 +17,5 @@ function isPalindrome(x) {
     }
     return reverseString == x ? true : false
 }
+
+
