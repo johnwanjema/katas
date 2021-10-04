@@ -43,3 +43,55 @@ function sumAll(){
 }
 
 sumAll(3,45,4)//52
+
+
+//Function scope
+//local scope
+function greetings(){
+    let message = 'Habari Yako';
+}
+greeting();
+console.log(message) //message is not defined
+
+
+//global scope
+function greeting(){
+    let message = 'Hello';
+    let  hello = function hello(){
+        console.log(message)
+    }
+    hello(); //Hello
+}
+
+greeting();
+
+//Block Scope
+// Refers to code placed between curly braces.
+// lifetime of variables of curly braces of an if statement,a while loop,or any set curly braces other than a function
+// NB variables  declared with the var key word or within function declarations DO NOT have BLock scope.
+
+//Example 1
+let age = 100
+
+if(age === 100){
+    // var age = 100;
+    // var removes block scope
+    let age = 100;
+    //let has block scope
+    //use let for block scope
+}
+
+console.log(color); //Error
+//color is out of scope
+
+// Example 2
+let messsage = 'Hello';
+
+if(messsage === 'Hello'){
+    let message = 'Inside if block'
+    console.log(message); //Inside if block
+}
+
+console.log(message);// Hello
+
+ 
