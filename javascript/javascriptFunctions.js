@@ -95,3 +95,47 @@ if(messsage === 'Hello'){
 console.log(message);// Hello
 
  
+// Immediately Invoked Function Expression(IIFE)
+// Lets us group our code and have it work in isolation,idependent of any other code.
+//Function Expression
+//Define a function and assign it to a a variable
+function hello(){
+    console.log('Hello');
+}
+
+// function call
+hello(); //Hello
+
+
+//Immediately invoked
+// Invoking function right away where its defined
+// To make it a function expression, we assign it to a variable or use it in another expression
+(function hello(){
+    console.log('Hello'); //Hello
+})();
+
+
+// Closures
+//without closure
+let greeting = (function(){
+    let message = 'Hello';
+    let getMessage = function(){
+        return message;
+    };
+})();
+
+console.log(greeting.message); //undefined Message variable is out of scope
+
+//Closures help keep message within the scope
+//with closures
+let greeting = (function(){
+    let message = 'Hello';
+    let getMessage = function(){
+        return message;
+    };
+    return{
+        getMessage:getMessage
+    }
+})();
+
+console.log(greeting.message); //Hello
