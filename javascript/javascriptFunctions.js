@@ -2,7 +2,7 @@
 // related action
 
 // Consists of function keyword function name arguments and function body
-function hello(name){
+function hello(name) {
     console.log('Hello' + name)
 }
 
@@ -10,7 +10,7 @@ function hello(name){
 hello('John');
 
 // Functions have a return value
-function greetings(){
+function greetings() {
     return 'Hello John'
 }
 
@@ -21,33 +21,33 @@ console.log(message);
 // is a variable that we list as part  of a function defination
 
 //Parameters num1 , num2
-function sum(num1,num2){
+function sum(num1, num2) {
     return num1 + num2;
 }
 
 //Arguments 1 and 2 a
-let result = sum(1,2)
+let result = sum(1, 2)
 
 
 // The Arguments Object
 // Allows one to invoke a function with an idefinate number of arguments.
 // The Arguments object allows us represent arguments like an array. It  does
 // not have array some array inbuilt methods like for each and map
-function sumAll(){
+function sumAll() {
     total = 0
-    for(let i=0; i< arguments.length; i++){
+    for (let i = 0; i < arguments.length; i++) {
         total += arguments[i]
     }
 
     return total;
 }
 
-sumAll(3,45,4)//52
+sumAll(3, 45, 4)//52
 
 
 //Function scope
 //local scope
-function greetings(){
+function greetings() {
     let message = 'Habari Yako';
 }
 greeting();
@@ -55,9 +55,9 @@ console.log(message) //message is not defined
 
 
 //global scope
-function greeting(){
+function greeting() {
     let message = 'Hello';
-    let  hello = function hello(){
+    let hello = function hello() {
         console.log(message)
     }
     hello(); //Hello
@@ -73,7 +73,7 @@ greeting();
 //Example 1
 let age = 100
 
-if(age === 100){
+if (age === 100) {
     // var age = 100;
     // var removes block scope
     let age = 100;
@@ -87,11 +87,123 @@ console.log(color); //Error
 // Example 2
 let messsage = 'Hello';
 
-if(messsage === 'Hello'){
+if (messsage === 'Hello') {
     let message = 'Inside if block'
     console.log(message); //Inside if block
 }
 
 console.log(message);// Hello
 
- 
+
+// Immediately Invoked Function Expression(IIFE)
+// Lets us group our code and have it work in isolation,idependent of any other code.
+//Function Expression
+//Define a function and assign it to a a variable
+function hello() {
+    console.log('Hello');
+}
+
+// function call
+hello(); //Hello
+
+
+//Immediately invoked
+// Invoking function right away where its defined
+// To make it a function expression, we assign it to a variable or use it in another expression
+(function hello() {
+    console.log('Hello'); //Hello
+})();
+
+
+// Closures
+//without closure
+let greeting = (function () {
+    let message = 'Hello';
+    let getMessage = function () {
+        return message;
+    };
+})();
+
+console.log(greeting.message); //undefined Message variable is out of scope
+
+//Closures help keep message within the scope
+//with closures
+let greeting = (function () {
+    let message = 'Hello';
+    let getMessage = function () {
+        return message;
+    };
+    return {
+        getMessage: getMessage
+    }
+})();
+
+console.log(greeting.message); //Hello
+
+
+//Arrow Functions
+// Refers to anonymous functions with thier own unique syntax
+// Introduced in ES6
+// Simpler way to create a function
+// WHY?
+// -shorter syntax
+// -this derives it value from  enclosing lexical scope
+
+//Short comings
+// Observe behavior of this keyword
+// No argument object - we cant ref arguments
+
+//Regular function Example 1
+let greet = function () {
+    return 'Hello world'
+}
+let message = greet();
+console.log(message); //Hello World
+
+
+//Arrow function Example 1
+let greet = () => {
+    return 'Hello world'
+}
+let message = greet();
+console.log(message); //Hello World
+
+
+//Regular function Example 2
+let greet = function (name) {
+    return 'Hello' + name
+}
+let message = greet('John');
+console.log(message); //Hello John
+
+//Arrow function Example 2
+// if there is one parameter paranthesis are optinal
+let greet = name => 'Hello' + name;
+let message = greet('John');
+console.log(message); //Hello John
+
+
+//Add two number Arrow function
+let sum = (num1, num2) => num1 + num2;
+
+
+// This keyword
+// Refers to the owner of the function we are executing
+// so if it's a standard function,this refers to the global window object;otherwise it can
+// refer to the object that a function is a method of.
+
+// Arrow functions dont have thier own this value.
+// Moreover the value of this is always inherited  from the enclosing scope
+
+
+let message ={
+    name:'john',
+    regularFunction(name){
+        console.log('Hello' + this.name)
+    },
+
+    arrowFunction: () => console.log('Hi' + this.name)
+}
+
+message.regularFunction(); // Hello John
+message.arrowFunction();// Hi
