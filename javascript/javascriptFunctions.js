@@ -292,3 +292,16 @@ console.log(escape('')) // %20
 console.log(unescape('%2o')) // 
 console.log(unescape('text')) // text
 
+
+//default parameters
+function sayHi(name = 'World'){
+    console.log('Hello' + name)
+}
+
+sayHi(); // Hello World
+sayHi('JOhn'); // Hello John
+
+// default paramenters should always come after the regular parameters
+function sayHi(message, name = 'John'){
+    console.log(message +name)
+}
