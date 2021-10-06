@@ -140,7 +140,6 @@ let greeting = (function () {
 
 console.log(greeting.message); //Hello
 
-
 //Arrow Functions
 // Refers to anonymous functions with thier own unique syntax
 // Introduced in ES6
