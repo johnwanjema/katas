@@ -195,9 +195,9 @@ let sum = (num1, num2) => num1 + num2;
 // Moreover the value of this is always inherited  from the enclosing scope
 
 
-let message ={
-    name:'john',
-    regularFunction(name){
+let message = {
+    name: 'john',
+    regularFunction(name) {
         console.log('Hello' + this.name)
     },
 
@@ -208,7 +208,7 @@ message.regularFunction(); // Hello John
 message.arrowFunction();// Hi
 
 // Function Context
-function sayHi(){
+function sayHi() {
     console.log('Hi'); //Hi
     console.log(this);// [obj object]
 }
@@ -219,10 +219,10 @@ let greeting = new sayHi()
 // an empty object within the function before returing it.
 
 // The call method
-let car1 = {brand:'Vw' ,color:'blue'}
-let car2 = {brand:'Toyota' ,color:'white'}
+let car1 = { brand: 'Vw', color: 'blue' }
+let car2 = { brand: 'Toyota', color: 'white' }
 
-let returnCarBrand = function (){
+let returnCarBrand = function () {
     console.log('Car brand is ' + this.brand)
 }
 
@@ -233,16 +233,16 @@ returnCarBrand.call(car2); // Car brand is Toyota
 // same syntax as apply
 // Diff is that call accepts an argument list, while apply accepts a single array of arguments
 
-function bookTitle(name,author){
+function bookTitle(name, author) {
     console.log(name + 'is written by ' + author);
     console.log(this);
 }
 
-bookTitle('Clean Code',' Robert Cecil Martin');
+bookTitle('Clean Code', ' Robert Cecil Martin');
 //apply
-bookTitle.apply(undefined ,['HTML & CSS: Design and Build Web Sites','Jon Duckett']);
+bookTitle.apply(undefined, ['HTML & CSS: Design and Build Web Sites', 'Jon Duckett']);
 //call
-bookTitle.call(undefined ,'Coding All-in-One For Dummies','Nikhil Abraham');
+bookTitle.call(undefined, 'Coding All-in-One For Dummies', 'Nikhil Abraham');
 
 //apply() 
 // array imput with similar elements
@@ -254,13 +254,13 @@ bookTitle.call(undefined ,'Coding All-in-One For Dummies','Nikhil Abraham');
 // bind method
 // Allows to make a copy of a function and then change the value of this
 let user1 = {
-    name:'Mary',
-    getName: function(){
+    name: 'Mary',
+    getName: function () {
         return this.name;
     }
 }
 
-let user2 = {name: 'John'};
+let user2 = { name: 'John' };
 let getNameCopy = user1.getName.bind(user2);
 console.log(getNameCopy); // John
 
@@ -274,8 +274,8 @@ console.log(eval('2 + 2')); // 4
 // parseInt
 // parses a string an returns an integer
 // you can also specify a base
-console.log(parseInt('F',16)) // 15
-console.log(parseInt('15',16)) // 15
+console.log(parseInt('F', 16)) // 15
+console.log(parseInt('15', 16)) // 15
 
 // parseFloat
 // returns a floating  point number
@@ -294,7 +294,7 @@ console.log(unescape('text')) // text
 
 
 //default parameters
-function sayHi(name = 'World'){
+function sayHi(name = 'World') {
     console.log('Hello' + name)
 }
 
@@ -302,6 +302,30 @@ sayHi(); // Hello World
 sayHi('JOhn'); // Hello John
 
 // default paramenters should always come after the regular parameters
-function sayHi(message, name = 'John'){
-    console.log(message +name)
+function sayHi(message, name = 'John') {
+    console.log(message + name)
 }
+
+
+// Rest parameters
+// The dots makes name a rest parameter and allows greet to accept multiple arguments 
+let sayHi = function greet(...names) {
+    names.forEach(name => console.log('Hi ' + name))
+}
+
+greet('John', 'Mary', 'James')  // Hi John
+                                // Hi Mary
+                                // Hi James
+
+// Rest parameters should always come after regular parameters
+let sayHi = function greet(message,...names) {
+    console.log(message + 'everyone!')
+    names.forEach(name => console.log('Hi ' + name))
+}
+
+greet('Welcome','John', 'Mary', 'James') // Welcome everyone!
+                            // Hi John
+                            // Hi Mary
+                            // Hi James
+
+
