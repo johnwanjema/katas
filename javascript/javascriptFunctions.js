@@ -206,3 +206,62 @@ let message ={
 
 message.regularFunction(); // Hello John
 message.arrowFunction();// Hi
+
+// Function Context
+function sayHi(){
+    console.log('Hi'); //Hi
+    console.log(this);// [obj object]
+}
+
+let greeting = new sayHi()
+//conservative function
+//Everytime you invoke a function with the new keyword javascript creates
+// an empty object within the function before returing it.
+
+// The call method
+let car1 = {brand:'Vw' ,color:'blue'}
+let car2 = {brand:'Toyota' ,color:'white'}
+
+let returnCarBrand = function (){
+    console.log('Car brand is ' + this.brand)
+}
+
+returnCarBrand.call(car1); // Car brand is Vw
+returnCarBrand.call(car2); // Car brand is Toyota
+
+// The apply method
+// same syntax as apply
+// Diff is that call accepts an argument list, while apply accepts a single array of arguments
+
+function bookTitle(name,author){
+    console.log(name + 'is written by ' + author);
+    console.log(this);
+}
+
+bookTitle('Clean Code',' Robert Cecil Martin');
+//apply
+bookTitle.apply(undefined ,['HTML & CSS: Design and Build Web Sites','Jon Duckett']);
+//call
+bookTitle.call(undefined ,'Coding All-in-One For Dummies','Nikhil Abraham');
+
+//apply() 
+// array imput with similar elements
+
+// call()
+// individual arguments of varying type
+
+
+// bind method
+// Allows to make a copy of a function and then change the value of this
+let user1 = {
+    name:'Mary',
+    getName: function(){
+        return this.name;
+    }
+}
+
+let user2 = {name: 'John'};
+let getNameCopy = user1.getName.bind(user2);
+console.log(getNameCopy); // John
+
+
