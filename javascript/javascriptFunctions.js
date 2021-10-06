@@ -265,3 +265,30 @@ let getNameCopy = user1.getName.bind(user2);
 console.log(getNameCopy); // John
 
 
+// Using  Built-in Functions
+
+// eval function
+// evaluates JavaScript code represented as a string.
+console.log(eval('2 + 2')); // 4
+
+// parseInt
+// parses a string an returns an integer
+// you can also specify a base
+console.log(parseInt('F',16)) // 15
+console.log(parseInt('15',16)) // 15
+
+// parseFloat
+// returns a floating  point number
+console.log(parseFloat('12.9')) // 12.9
+console.log(parseFloat('3.99e-1')) // 39.9
+
+
+// escape
+// returns a hexadecimal encoding of an argument in the isolated one character set
+console.log(escape('text')) // text
+console.log(escape('')) // %20
+
+//unescape
+console.log(unescape('%2o')) // 
+console.log(unescape('text')) // text
+
