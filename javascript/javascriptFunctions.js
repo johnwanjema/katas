@@ -314,18 +314,28 @@ let sayHi = function greet(...names) {
 }
 
 greet('John', 'Mary', 'James')  // Hi John
-                                // Hi Mary
-                                // Hi James
+// Hi Mary
+// Hi James
 
 // Rest parameters should always come after regular parameters
-let sayHi = function greet(message,...names) {
+let sayHi = function greet(message, ...names) {
     console.log(message + 'everyone!')
     names.forEach(name => console.log('Hi ' + name))
 }
 
-greet('Welcome','John', 'Mary', 'James') // Welcome everyone!
-                            // Hi John
-                            // Hi Mary
-                            // Hi James
+greet('Welcome', 'John', 'Mary', 'James') // Welcome everyone!
+// Hi John
+// Hi Mary
+// Hi James
 
 
+// Spread Operator
+// Allows an a function to take an array as an argument and spread 
+// out its elements so that they can be assigned  to individual parameters 
+function greet(user1, user2) {
+    console.log('Hello' + user1 +' and ' + user2)
+}
+
+let names = ['John','Mary']
+
+greet(...names);
