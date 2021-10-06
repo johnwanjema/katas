@@ -94,7 +94,6 @@ if (messsage === 'Hello') {
 
 console.log(message);// Hello
 
-
 // Immediately Invoked Function Expression(IIFE)
 // Lets us group our code and have it work in isolation,idependent of any other code.
 //Function Expression
