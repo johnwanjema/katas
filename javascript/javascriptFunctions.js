@@ -229,7 +229,7 @@ returnCarBrand.call(car1); // Car brand is Vw
 returnCarBrand.call(car2); // Car brand is Toyota
 
 // The apply method
-// same syntax as apply
+// same syntax as call
 // Diff is that call accepts an argument list, while apply accepts a single array of arguments
 
 function bookTitle(name, author) {
@@ -252,16 +252,16 @@ bookTitle.call(undefined, 'Coding All-in-One For Dummies', 'Nikhil Abraham');
 
 // bind method
 // Allows to make a copy of a function and then change the value of this
-let user1 = {
-    name: 'Mary',
-    getName: function () {
-        return this.name;
+let book = {
+    author: 'Mary',
+    getAuthor: function () {
+        return this.author;
     }
 }
 
-let user2 = { name: 'John' };
-let getNameCopy = user1.getName.bind(user2);
-console.log(getNameCopy); // John
+let book2 = { author: 'John' };
+let getAuthorcopy = book.getAuthor.bind(book2);
+console.log(getAuthorcopy()); // John
 
 
 // Using  Built-in Functions
@@ -332,9 +332,9 @@ greet('Welcome', 'John', 'Mary', 'James') // Welcome everyone!
 // Allows an a function to take an array as an argument and spread 
 // out its elements so that they can be assigned  to individual parameters 
 function greet(user1, user2) {
-    console.log('Hello' + user1 +' and ' + user2)
+    console.log('Hello ' + user1 +' and ' + user2)
 }
 
-let names = ['John','Mary']
+let names = ['John','Mary'];
 
 greet(...names);
